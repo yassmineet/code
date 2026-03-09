@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان رخصة السياقة بتونس - استعد للنجاح</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Background Decoration -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-car"></i>
+                <span>عالم السياقة</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" data-view="home" class="active">الرئيسية</a></li>
+                <li><a href="#" data-view="lessons">الدروس</a></li>
+                <li><a href="#" data-view="signs">العلامات</a></li>
+                <li><a href="#" data-view="quiz" class="btn-primary-small">ابدأ الاختبار</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container main-content" id="app-root">
+        <!-- Views will be injected here via JavaScript -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 دليل رخصة السياقة التونسي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Templates -->
+    <template id="view-home">
+        <section class="hero slide-up">
+            <div class="hero-content">
+                <span class="badge">المنصة الأولى للتعلم</span>
+                <h1>اجتز امتحان رخصة السياقة <span class="highlight">بتفوق</span></h1>
+                <p>تعلم مجلة الطرقات التونسية، تدرّب على أسئلة حقيقية، واضمن نجاحك في الامتحان النظري بكل ثقة وسهولة.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-icon" onclick="app.navigate('quiz')">
+                        <i class="fa-solid fa-list-check"></i> ابدأ الاختبار التجريبي
+                    </button>
+                    <button class="btn btn-secondary btn-icon" onclick="app.navigate('signs')">
+                        <i class="fa-solid fa-triangle-exclamation"></i> تعلم العلامات
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="glass-card stat-card feature-1">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <div>
+                        <h3>+1000 سؤال</h3>
+                        <p>تحديث مستمر للأسئلة</p>
+                    </div>
+                </div>
+                <div class="glass-card stat-card feature-2">
+                    <i class="fa-solid fa-road"></i>
+                    <div>
+                        <h3>جميع العلامات</h3>
+                        <p>شرح مفصل وواضح</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section slide-up delay-1">
+            <div class="section-header">
+                <h2>لماذا تختار منصتنا؟</h2>
+                <div class="separator"></div>
+            </div>
+            <div class="features-grid">
+                <div class="glass-card feature-box hover-lift">
+                    <div class="icon-wrapper"><i class="fa-solid fa-book-open"></i></div>
+                    <h3>دروس مبسطة</h3>
+                    <p>شرح شامل وقواعد المرور بأسلوب سهل الفهم للمبتدئين.</p>
+                </div>
+                <div class="glass-card feature-box hover-lift">
+                    <div class="icon-wrapper"><i class="fa-solid fa-traffic-light"></i></div>
+                    <h3>علامات المرور</h3>
+                    <p>دليل كامل لكل أصناف العلامات، التحجير، الإجبار، الخطر، والارشاد.</p>
+                </div>
+                <div class="glass-card feature-box hover-lift">
+                    <div class="icon-wrapper"><i class="fa-solid fa-stopwatch"></i></div>
+                    <h3>اختبارات تفاعلية</h3>
+                    <p>محاكاة واقعية لامتحان السياقة التونسي مع تصحيح فوري.</p>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="view-signs">
+        <section class="signs-view slide-up">
+            <div class="section-header text-center">
+                <h2>علامات المرور</h2>
+                <p>تعرّف على مختلف أنواع إشارات وعلامات المرور الضرورية.</p>
+                <div class="separator mx-auto"></div>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs glass">
+                    <button class="tab-btn active" data-category="danger">الخطر</button>
+                    <button class="tab-btn" data-category="prohibition">المنع</button>
+                    <button class="tab-btn" data-category="mandatory">الإجبار</button>
+                    <button class="tab-btn" data-category="info">الإرشاد</button>
+                </div>
+            </div>
+
+            <div class="signs-grid" id="signs-container">
+                <!-- Signs populated by JS -->
+            </div>
+        </section>
+    </template>
+
+    <template id="view-lessons">
+        <section class="lessons-view slide-up">
+            <div class="section-header text-center">
+                <h2>دروس السياقة</h2>
+                <p>قواعد وقوانين المرور في المجلة التونسية.</p>
+                <div class="separator mx-auto"></div>
+            </div>
+
+            <div class="lessons-accordion" id="lessons-container">
+                <!-- Lessons populated by JS -->
+            </div>
+        </section>
+    </template>
+
+    <template id="view-quiz-start">
+        <section class="quiz-start-view slide-up text-center">
+            <div class="glass-card p-xl mx-auto" style="max-width: 600px;">
+                <div class="icon-xl mb-4"><i class="fa-solid fa-clipboard-list text-primary"></i></div>
+                <h2>اختبار تجريبي</h2>
+                <p class="mb-4">يتكون هذا الامتحان التفاعلي من 30 سؤالاً. يجب عليك الإجابة بشكل صحيح على 24 سؤالاً على
+                    الأقل للنجاح. هل أنت مستعد؟</p>
+
+                <div class="quiz-rules text-start mb-4">
+                    <ul>
+                        <li><i class="fa-solid fa-clock"></i> توقيت الاختبار: 30 دقيقة</li>
+                        <li><i class="fa-solid fa-check"></i> 30 سؤال عشوائي</li>
+                        <li><i class="fa-solid fa-bullseye"></i> النتيجة النهائية والمراجعة في نهاية الاختبار</li>
+                    </ul>
+                </div>
+
+                <button class="btn btn-primary btn-lg w-100" id="start-btn" onclick="app.startQuiz()">ابدأ الآن</button>
+            </div>
+        </section>
+    </template>
+
+    <template id="view-quiz-question">
+        <section class="quiz-active-view fade-in">
+            <div class="quiz-header glass mb-4">
+                <div class="quiz-progress-bar-container">
+                    <div class="quiz-progress-bar" id="quiz-progress"></div>
+                </div>
+                <div class="quiz-stats">
+                    <span class="fs-lg font-bold">السؤال <span id="current-q-num">1</span> <span class="text-muted">/
+                            <span id="total-q-num">30</span></span></span>
+                    <span class="timer-badge" id="quiz-timer"><i class="fa-solid fa-stopwatch"></i> 30:00</span>
+                </div>
+            </div>
+
+            <div class="glass-card quiz-card slide-up">
+                <h3 id="question-text" class="question-title"></h3>
+
+                <div id="question-image-container" class="question-image mb-4" style="display: none;">
+                    <!-- Image inserted here if exists -->
+                </div>
+
+                <div class="options-container" id="options-container">
+                    <!-- Options populated by JS -->
+                </div>
+
+                <div class="quiz-actions text-end mt-4">
+                    <button class="btn btn-primary" id="next-q-btn" onclick="app.nextQuestion()" style="display: none;">
+                        التالي <i class="fa-solid fa-arrow-left ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="view-results">
+        <section class="results-view slide-up text-center">
+            <div class="glass-card p-xl mx-auto mb-4" style="max-width: 800px;" id="result-card">
+                <!-- Result icon -->
+                <div class="result-icon-container mb-4" id="result-icon"></div>
+
+                <h2 id="result-title" class="mb-2"></h2>
+                <h1 class="score-display mb-4" dir="ltr"><span id="final-score"></span>/30</h1>
+
+                <div class="stats-row mb-4">
+                    <div class="stat-item correct">
+                        <i class="fa-solid fa-check"></i>
+                        <span id="correct-count"></span> صحيحة
+                    </div>
+                    <div class="stat-item incorrect">
+                        <i class="fa-solid fa-times"></i>
+                        <span id="incorrect-count"></span> خاطئة
+                    </div>
+                    <div class="stat-item text-muted">
+                        <i class="fa-solid fa-minus"></i>
+                        <span id="unanswered-count"></span> دون إجابة
+                    </div>
+                </div>
+
+                <p id="result-message" class="mb-4 text-muted"></p>
+
+                <div class="actions-grid mb-4">
+                    <button class="btn btn-primary" onclick="app.startQuiz()"><i class="fa-solid fa-rotate-right"></i>
+                        إعادة الاختبار</button>
+                    <button class="btn btn-secondary" onclick="app.navigate('home')"><i class="fa-solid fa-home"></i>
+                        العودة للرئيسية</button>
+                </div>
+            </div>
+
+            <div class="glass-card p-xl mx-auto" style="max-width: 800px; text-align: right;">
+                <h3 class="mb-4 text-center">مراجعة الإجابات</h3>
+                <div id="review-container" class="review-container">
+                    <!-- Reviewed questions populated by JS -->
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
