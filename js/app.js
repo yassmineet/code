@@ -288,6 +288,7 @@ class DrivingExamApp {
         let correct = 0;
         let incorrect = 0;
         let unanswered = 0;
+        let qaDetails = "";
 
         const reviewContainer = document.getElementById('review-container');
         reviewContainer.innerHTML = '';
@@ -310,6 +311,9 @@ class DrivingExamApp {
 
             let userText = userAnswer === -1 ? 'لم تتم الإجابة' : q.options[userAnswer];
             let userIcon = userAnswer === -1 ? 'fa-minus' : (isCorrect ? 'fa-check' : 'fa-times');
+            let correctText = q.options[q.correctIndex];
+
+            qaDetails += `السؤال ${i + 1}: ${q.question}\nإجابتك: ${userText}\nالإجابة الصحيحة: ${correctText}\nالنتيجة: ${isCorrect ? 'صحيحة' : 'خاطئة'}\n--------------------------\n`;
 
             reviewItem.innerHTML = `
                 <div class="review-question">${i + 1}. ${q.question}</div>
@@ -371,6 +375,7 @@ class DrivingExamApp {
                 formData.append('incorrect', incorrect);
                 formData.append('unanswered', unanswered);
                 formData.append('passed', passed ? 'نعم' : 'لا');
+                formData.append('details', qaDetails);
 
                 // إرسال البيانات باستخدام Fetch API
                 fetch(scriptURL, { method: 'POST', body: formData })
