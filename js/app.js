@@ -358,6 +358,32 @@ class DrivingExamApp {
             resultCard.style.borderTop = '4px solid var(--danger)';
         }
 
+        // ========== إرسال النتيجة إلى Google Sheets ==========
+        // يجب وضع رابط Google Apps Script الخاص بك هنا
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyDYk_LfCVX3cr9KHFcp5i1P5G7-qnyLGT-JF-xZJULlx5JTaTDR951-8c5x75TOes56w/exec';
+
+        if (scriptURL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            try {
+                const formData = new FormData();
+                formData.append('date', new Date().toLocaleString('ar-TN'));
+                formData.append('score', this.score);
+                formData.append('correct', correct);
+                formData.append('incorrect', incorrect);
+                formData.append('unanswered', unanswered);
+                formData.append('passed', passed ? 'نعم' : 'لا');
+
+                // إرسال البيانات باستخدام Fetch API
+                fetch(scriptURL, { method: 'POST', body: formData })
+                    .then(response => console.log('تم إرسال النتيجة بنجاح إلى جوجل شيت', response))
+                    .catch(error => console.error('حدث خطأ أثناء الإرسال', error.message));
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        } else {
+            console.log('لم يتم ضبط رابط Google Sheets. النتيجة لن تحفظ.');
+        }
+        // ======================================================
+
         window.scrollTo(0, 0);
     }
 }
